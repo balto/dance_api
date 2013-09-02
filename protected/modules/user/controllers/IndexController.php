@@ -4,7 +4,18 @@ class IndexController extends Controller
 {
 	public function actionIndex()
 	{
-		$response = array('success' => true, 'data' => array('egy' => 1,'ketto' => 2));
+		$result = User::model()->findAll();
+		
+		$users = array();
+		
+		foreach ($result as $value) {
+			$users[] = array(
+				'name' => $value->username,
+				'id' => $value->id,
+			);
+		}
+		
+		$response = array('success' => true, 'data' => array('users' => $users));
 		
 		$this->renderText(json_encode($response));
 	}

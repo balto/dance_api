@@ -1,7 +1,8 @@
 <?php
 
-class UserModule extends CWebModule
+class CampaignModule extends CWebModule
 {
+    public $secure = false;
 	public function init()
 	{
 		// this method is called when the module is being created
@@ -9,8 +10,8 @@ class UserModule extends CWebModule
 
 		// import the module-level models and components
 		$this->setImport(array(
-			'user.models.*',
-			'user.components.*',
+			'campaign.models.*',
+			'campaign.components.*',
 		));
 	}
 
@@ -18,8 +19,7 @@ class UserModule extends CWebModule
 	{
 		if(parent::beforeControllerAction($controller, $action))
 		{
-			
-			$controller->layout = false;
+            $controller->layout = false;
 			// this method is called before any module controller action is performed
 			// you may place customized code here
 			return true;
